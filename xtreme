@@ -1,0 +1,4 @@
+#!/bin/bash
+killall xtreme.pl
+
+./xtreme.pl --daemon 2>&1 >> xtreme.log &
