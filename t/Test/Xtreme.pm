@@ -46,6 +46,10 @@ sub test_previous_day : Test {
  is(&xtreme::answer('dc382380: what is the previous day of 15-08-2013'),'14-08-2013');
 }
 
+sub test_minus : Test {
+  is(&xtreme::answer('6818c6b0: what is 9 minus 17'), -8);
+}
+
 sub test_cqrt : Test {
   is(&xtreme::cqrt(729), 9);
 }

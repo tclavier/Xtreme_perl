@@ -24,6 +24,8 @@ sub answer {
     $rep = $max;
   } elsif ($q =~ m/(.*)what is (\d+) plus (\d+)/) {
     $rep = $2 + $3;
+  } elsif ($q =~ m/(.*)what is (\d+) minus (\d+)/) {
+    $rep = $2 - $3;
   } elsif ($q =~ m/(.*)what is (\d+) multiplied by (\d+)/) {
     $rep = $2 * $3;
   } elsif ($q =~ m/(.*)which of the following numbers is both a square and a cube:(.*)/) {
