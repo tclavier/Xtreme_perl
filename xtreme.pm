@@ -43,6 +43,12 @@ sub answer {
     $rep = 'Paris';
   } elsif ($q =~ m/.*who is the Prime Minister of Great Britain.*/) {
     $rep = 'David Cameron';
+  } elsif ($q =~ m/.*what currency did Spain use before the Euro.*/) {
+    $rep = 'peseta';
+  } elsif ($q =~ m/.*what colour is a banana.*/) {
+    $rep = 'yellow';
+  } elsif ($q =~ m/.*who played James Bond in the film Dr No.*/) {
+    $rep = 'Sean Connery';
   } elsif ($q =~ m/(.*)which of the following numbers are primes:(.*)/) {
     my $string = $2;
     $string =~ s/ //g;
