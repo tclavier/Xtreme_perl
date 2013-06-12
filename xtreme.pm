@@ -2,6 +2,8 @@ package xtreme;
 
 use strict;
 use warnings;
+use DateTime;
+use Date::Parse;
 
 sub answer {
   my $q = shift;
@@ -50,6 +52,13 @@ sub answer {
         $rep = $num; 
       }
     }
+  } elsif ($q =~ m/(.*)what is the previous day of(.*)/) {
+    my $string = $2;
+    $string =~ s/ //g;
+    my ($d,$m,$y) = split(/-/,$string);
+    my $date = DateTime->new(year => $y, month=> $m, day=>$d);
+    $date->subtract( days => 1 );
+    $rep = $date->dmy('-');
   } else {
     print STDERR "Query : '$q'\n";
   }
