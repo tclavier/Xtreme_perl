@@ -39,7 +39,7 @@ sub test_david_cameron : Test {
 }
 
 sub test_prime : Test {
- is(&xtreme::answer('2922d710: which of the following numbers are primes: 197, 307, 907, 360'),'907');
+ is(&xtreme::answer('2922d710: which of the following numbers are primes: 197, 307, 907, 360'),'197, 307, 907');
 }
 
 sub test_previous_day : Test {
@@ -48,6 +48,14 @@ sub test_previous_day : Test {
 
 sub test_minus : Test {
   is(&xtreme::answer('6818c6b0: what is 9 minus 17'), -8);
+}
+
+sub test_power : Test {
+  is(&xtreme::answer('8134f920: what is 2 to the power of 10'),1024);
+}
+
+sub test_fibonacci : Test {
+  is(&xtreme::answer('what is the 18th number in the Fibonacci sequence'),1597);
 }
 
 sub test_cqrt : Test {

@@ -28,19 +28,23 @@ sub answer {
     $rep = $2 - $3;
   } elsif ($q =~ m/(.*)what is (\d+) multiplied by (\d+)/) {
     $rep = $2 * $3;
+  } elsif ($q =~ m/(.*)what is (\d+) to the power of (\d+)/) {
+    $rep = $2 ** $3;
   } elsif ($q =~ m/(.*)which of the following numbers is both a square and a cube:(.*)/) {
     my $string = $2;
     $string =~ s/ //g;
     my @nums = split(/,/, $string);
+    my @good = ();
     foreach my $num (@nums) {
       my $r2 = sqrt($num);
       my $r3 = cqrt($num);
       if ($r2 == int("$r2 ")) {
         if ("$r3" == int("$r3")) {
-          $rep = $num;
+          push(@good, $num)
         }
       }
     }
+    $rep = join(', ',@good);
   } elsif ($q =~ m/.*which city is the Eiffel tower in.*/) {
     $rep = 'Paris';
   } elsif ($q =~ m/.*who is the Prime Minister of Great Britain.*/) {
@@ -51,15 +55,19 @@ sub answer {
     $rep = 'yellow';
   } elsif ($q =~ m/.*who played James Bond in the film Dr No.*/) {
     $rep = 'Sean Connery';
+  } elsif ($q =~ m/.*who created 'Il pulcino Pio'/) {
+    $rep = 'Lucio Scarpa';
   } elsif ($q =~ m/(.*)which of the following numbers are primes:(.*)/) {
     my $string = $2;
     $string =~ s/ //g;
     my @nums = split(/,/, $string);
+    my @good = ();
     foreach my $num (@nums) {
       if (is_prime($num)) { 
-        $rep = $num; 
+        push(@good, $num)
       }
     }
+    $rep = join(', ',@good);
   } elsif ($q =~ m/(.*)what is the previous day of(.*)/) {
     my $string = $2;
     $string =~ s/ //g;
@@ -67,6 +75,14 @@ sub answer {
     my $date = DateTime->new(year => $y, month=> $m, day=>$d);
     $date->subtract( days => 1 );
     $rep = $date->dmy('-');
+  } elsif ($q =~ m/what is the (\d+)th number in the Fibonacci sequence/) {
+    my $a1 = 0;
+    my $a2 = 1;
+    my $stop = $1;
+    for ( 3 .. $stop ) {
+      ( $a1, $a2 ) = ( $a2, $a1+$a2 );
+    }
+    $rep = $a2;
   } else {
     print STDERR "Query : '$q'\n";
   }
