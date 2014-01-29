@@ -10,5 +10,7 @@ set trace => 1;
 set logger => 'console';
 
 get '/' => sub { return &xtreme::answer(param('q')); };
+
+get '/stats' => sub { return &xtreme::stats();};
  
 start;

@@ -58,6 +58,10 @@ sub test_fibonacci : Test {
   is(&xtreme::answer('what is the 18th number in the Fibonacci sequence'),1597);
 }
 
+sub test_fibonacci_22 : Test {
+  is(&xtreme::answer('what is the 22th number in the Fibonacci sequence'),10946);
+}
+
 sub test_cqrt : Test {
   is(&xtreme::cqrt(729), 9);
 }

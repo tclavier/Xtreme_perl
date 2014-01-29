@@ -83,6 +83,8 @@ sub answer {
       ( $a1, $a2 ) = ( $a2, $a1+$a2 );
     }
     $rep = $a2;
+  } elsif ($q =~ m/what is your name/) {
+    $rep = "Thomas";
   } else {
     print STDERR "Query : '$q'\n";
   }
